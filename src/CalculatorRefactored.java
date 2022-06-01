@@ -29,6 +29,27 @@ public class CalculatorRefactored implements ActionListener{
 		textField.setFont(numberFont);
 		textField.setEditable(false);
 		
+		//call to method to create the buttons and add them to the appropriate array
+		createButtons();
+		
+		//setting the position of the negative, delete and clear buttons
+		negativeButton.setBounds(50,430, 100, 50);
+		deleteButton.setBounds(150, 430, 100, 50);
+		clearButton.setBounds(250, 430, 100, 50);
+		
+		//setting the panel and layout
+		panel = new JPanel();
+		panel.setBounds(50, 100, 300, 300);
+		panel.setLayout(new GridLayout(4,4,10,10));
+		
+		addButtonsPanel(panel,numberButtons,functionButtons);
+		addToFrame(frame,negativeButton, deleteButton,clearButton, textField);
+		
+		
+	}
+	
+	public void createButtons() {
+
 		//setting up the number buttons and adding to array
 		for (int i = 0; i<10; i++) {
 			numberButtons[i] = new JButton(String.valueOf(i));	
@@ -62,21 +83,6 @@ public class CalculatorRefactored implements ActionListener{
 			functionButtons[i].setFont(textFont);
 			functionButtons[i].setFocusable(false);			
 		}
-		
-		//setting the position of the negative, delete and clear buttons
-		negativeButton.setBounds(50,430, 100, 50);
-		deleteButton.setBounds(150, 430, 100, 50);
-		clearButton.setBounds(250, 430, 100, 50);
-		
-		//setting the panel and layout
-		panel = new JPanel();
-		panel.setBounds(50, 100, 300, 300);
-		panel.setLayout(new GridLayout(4,4,10,10));
-		
-		addButtonsPanel(panel,numberButtons,functionButtons);
-		addToFrame(frame,negativeButton, deleteButton,clearButton, textField);
-		
-		
 	}
 	
 	public void addButtonsPanel(JPanel panel, JButton[] numberButtons, JButton[] functionButtons) {
